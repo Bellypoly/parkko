@@ -1,11 +1,13 @@
 <?php
 
-function calculate_charge(){
+function calculate_charge($datetime1, $datetime2){
 
 	date_default_timezone_set('Asia/Bangkok');
 
-	$start_time = new DateTime('2015-08-26 19:00:00');
-	$stop_time = new DateTime('2015-08-28 15:00:00');
+	$start_time = new DateTime($datetime1);
+	$stop_time = new DateTime($datetime2);
+	// $start_time = new DateTime('2015-08-26 19:00:00');
+	// $stop_time = new DateTime('2015-08-28 15:00:00');
 	$diff = $start_time->diff($stop_time);
 	
 	$park_days = $diff->format('%a');
