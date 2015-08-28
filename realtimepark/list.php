@@ -57,7 +57,7 @@
                 <input type = "button" name ="licence2" value="ณข1549 ลำปาง" style="width:180px;" onclick="javascript:form_value('ณข1549','ลำปาง');">
             </div>
             <div class="col-md-6 col-xs-6">
-                <input type = "button" name ="licence3" value="ฌส2509 กรุงเทพมหานคร" style="width:180px;" onclick="javascript:form_value('ฌส2509','กรุงเทพมหานคร');">
+                <input type = "button" name ="licence3" value="ฌส2509 กรุงเทพมหานคร" style="width:180px;" onclick="javascript:form_value('ฌส2709','กรุงเทพมหานคร');">
             </div>
         </div>
     </div>
