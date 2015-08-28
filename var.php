@@ -6,10 +6,7 @@ $record1 = array(
     "time_out" => "2015/08/27 10:05:00",
     "province" => "ลำปาง",
     "pay" => "1500",
-    "shop" => "",
-	"hour" => "16",
-	"price" => "1170",
-	"change" => "330"
+    "shop" => ""
 );
 $record2 = array(
     "id" => "2",
@@ -18,10 +15,7 @@ $record2 = array(
     "time_out" => "2015/08/27 21:05:00",
     "province" => "กรุงเทพมหานคร",
     "pay" => "500",
-    "shop" => "",
-	"hour" => "12",
-	"price" => "170",
-	"change" => "330"
+    "shop" => ""
 );
 $record3 = array(
     "id" => "3",
@@ -30,9 +24,6 @@ $record3 = array(
     "time_out" => "2015/08/27 17:00:00",
     "pay" => "500",
     "province" => "กรุงเทพมหานคร",
-    "shop" => "5000",
-	"hour" => "5",
-	"price" => "10",
-	"change" => "490"
+    "shop" => "5000"
 );
 $data = array($record1,$record2,$record3);
