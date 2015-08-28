@@ -9,5 +9,5 @@ function countHours($datetime1, $datetime2)
     $hours = $diff->h;
     $hours = $hours + ($diff->days*24);
 
-    return $hours;
+    return $hours + 1;
 }
