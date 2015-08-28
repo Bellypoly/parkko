@@ -5,16 +5,19 @@ function calculate_charge(){
 	date_default_timezone_set('Asia/Bangkok');
 
 	$start_time = new DateTime('2015-08-26 19:00:00');
-	$stop_time = new DateTime();
+	$stop_time = new DateTime('2015-08-28 15:00:00');
 	$diff = $start_time->diff($stop_time);
 	
-	$park_hours = $diff->h;
-	$park_minutes = $diff->i;
+	$park_days = $diff->format('%a');
+	$park_hours = $diff->format('%h');
+	// $park_minutes = $diff->i;
 
-	$park_hours = $diff->h;
+	$park_hours = (int)$park_days*24 + (int)$diff->h;
 	$park_minutes = $diff->i;
 
 	$total_charge = 0;
+	// echo $stop_time->format('Y-m-d H:i:s');
+	// echo $park_hours;
 
 	if ($park_minutes > 0){
 		$park_hours = $park_hours + 1;
@@ -22,35 +25,30 @@ function calculate_charge(){
 
 	//------------------------
 
-	// for ($x=1; $x <= $park_hours; $x++){
+	for ($x=1; $x <= $park_hours; $x++){
 
-	// 	if ($x = 1){
-	// 		$current_charge = 0;
-	// 	} else if ($x >= 1 && $x <= 3) {
-	// 		if ($x = 1){
-	// 			$current_charge = 10;
-	// 		}
-	// 	} else {
+		if ($x == 1){
+			$current_charge = 0;
+		} else if ($x >= 1 && $x <= 3) {
+			if ($x == 1){
+				$current_charge = 10;
+			}
+		} else {
+			$current_hour = $start_time->format('H');
+			if ((int)$current_hour >= 2 && (int)$current_hour <= 6){
+				$current_charge = 250;
+			} else {
+				$current_charge = 20;
+			}
+		}
 
-	// 		$current_charge = 20;
-	// 		// $current_hour = $start_time->format('H');
-	// 		// if ($current_hour >= '2' && $current_hour <= '6'){
-	// 		// 	$current_charge = 250;
-	// 		// } else {
-	// 		// 	$current_charge = 20;
-	// 		// }
-	// 	}
+		$total_charge = $total_charge + $current_charge;
+		$start_time->add(new DateInterval('PT1H'));
 
-	// 	$total_charge = $total_charge + $current_charge;
-	// 	// $start_time->add(new DateInterval('PT1H'));
-
-	// }
-
+	}
 
 	// //-----------------------
-	// echo $total_charge;
-
-	return '2690';
+	return $total_charge;
 
 }
 
