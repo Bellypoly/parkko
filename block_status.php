@@ -35,14 +35,23 @@
     <script type="text/javascript">
     // function changeColor () {
     $(document).ready(function(){
+        var block_type = '';
         $("[id^='blk_']").click(function(){
-            // alert($(this).css("background-color"));
+            var span = document.createElement("span");
+            var lady_text = document.createTextNode("Lady Park");
+            span.appendChild(lady_text);
+            //IF PINK
             if($(this).css("background-color") == 'rgb(255, 192, 203)'){
                 $(this).css("background-color",'rgb(141, 199, 63)');
+                block_type = 2;
             }
+            //IF GREEN
             else{
                 $(this).css("background-color",'rgb(255, 192, 203)');
+                // $(this).append(span);
+                block_type = 1;
             }
+            // console.log(block_type+'----'+$(this).attr('value'));
             $.ajax({
                 type: "GET",
                 data: { id:$(this).attr('value'),
@@ -50,7 +59,7 @@
                 url: "block_update.php",
                 success: function(data){
                    //data will contain the vote count echoed by the controller i.e.  
-                     // alert(data);
+                     console.log(data);
                   //then append the result where ever you want like
                 }
             });
@@ -60,27 +69,40 @@
 </head>
 
 <body> 
+<?php 
+$servername = "128.199.248.168";
+$username = "root";
+$password = "spr1nt3r";
+$dbname = "parkko";
 
-    
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+$sql = "SELECT block_type FROM block ORDER BY id";
+$result = mysqli_query($conn, $sql);
 
-    <!-- Page Content -->
-    <div class="container">
-        <!-- /.row -->
-        <div class="row" >
-              <div id="blk_1" value="1" name="1"  class="block1 col-xs-12 col-sm-6 col-md-6">1</div>
-              <div id="blk_2" value="2" name="1"  class="block1 col-xs-6 col-md-6">2</div>
-        </div>
-        <div class="row" >
-              <div id="blk_3" value="3" name="1"  class="block1 col-xs-12 col-sm-6 col-md-6">3</div>
-              <div id="blk_4" value="4" name="1"  class="block1 col-xs-6 col-md-6">4</div>
-        </div>
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    $i=0;
+    while($row = mysqli_fetch_assoc($result)) {
+        // echo $row["block_type"];
+        if($row["block_type"] == 1){
+            echo "<div id='blk_".($i+1)."' value=".($i+1)." class='block1 col-xs-12 col-sm-6 col-md-6'>".($i+1)."</div>";
+        }
+        else{
+            echo "<div id='blk_".($i+1)."' value=".($i+1)." class='block_lady col-xs-12 col-sm-6 col-md-6'>".($i+1)."</div>";
+        }
+        $i++;
+    }
+} else {
+    echo "0 results";
+}
 
-        
-    </div>
-    <!-- /.container -->
-
-
-
+mysqli_close($conn);
+?>
 </body>
 
 </html>
