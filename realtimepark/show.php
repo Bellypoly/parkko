@@ -1,3 +1,12 @@
+<?php
+$license = $_GET["license"];
+$province = $_GET["province"];
+include 'get_car_data.php';
+$result = get_data($license, $province);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +42,7 @@
 <body style="background-color: pink">
 
     <!-- Page Content -->
-    <div class="container" align="center" style="background-color: pink; width: 350px;">
+    <div class="container" align="center" style="background-color: pink;border: #000 1px; width: 350px;">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h1>Parkko</h1>
@@ -45,38 +54,35 @@
             </div>
         </div>
         <!-- /.row -->
-         <form name="form1"action="show.php" method="get" accept-charset="utf-8">
-           <input type="hidden" name="license" value="">
-           <input type="hidden" name="province" value="">
-         </form>
-         
         <div class="row">
             <div class="col-md-6 col-xs-6">
-                <input type = "button" name ="licence1" value="Licence1" style="width:180px;" onclick="javascript:form_value('สฬ 5420','กรุงเทพ');">
+                <p>เลขทะเบียน : <?php echo $license; ?></p>
             </div>
             <div class="col-md-6 col-xs-6">
-                <input type = "button" name ="licence2" value="Licence2" style="width:180px;" onclick="javascript:form_value('ณข 1549','ลำปาง');">
+                <p>หมวดจังหวัด :  <?php echo $province; ?> </p>
             </div>
             <div class="col-md-6 col-xs-6">
-                <input type = "button" name ="licence3" value="Licence3" style="width:180px;" onclick="javascript:form_value('ฌส 2509','กรุงเทพ');">
+                <p>ช่องจอด : <?php echo $result['park']; ?></p>
             </div>
-        </div> 
+<div class="col-md-6 col-xs-6">
+                <p> ตัวแปรวันเวลา ที่เข้า : <?php echo $result['time_in']; ?></p>
+            </div>
+<div class="col-md-6 col-xs-6">
+                <p>ชั่วโมงที่จอด   : <?php echo $result['hours']; ?>  ชั่วโมง</p>
+            </div>
+<div class="col-md-6 col-xs-6">
+                <p>ค่าจอด  : <?php echo number_format($result['price'], 2); ?>  บาท</p>
+            </div>
+        </div>
     </div>
     <!-- /.container -->
-    
 
     <!-- jQuery Version 1.11.1 -->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-<script type="text/javascript"> 
-function form_value(datax,province) {
-    form1.license.value =datax;
-    form1.province.value =province;
-    form1.submit();
-};
-</script>
+
 </body>
 
 </html>

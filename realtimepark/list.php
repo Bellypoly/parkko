@@ -1,10 +1,3 @@
-<?php
-$license = $_GET["license"];
-$province = $_GET["province"];
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +33,7 @@ $province = $_GET["province"];
 <body style="background-color: pink">
 
     <!-- Page Content -->
-    <div class="container" align="center" style="background-color: pink;border: #000 1px; width: 350px;">
+    <div class="container" align="center" style="background-color: pink; width: 350px;">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h1>Parkko</h1>
@@ -52,28 +45,21 @@ $province = $_GET["province"];
             </div>
         </div>
         <!-- /.row -->
-         
+         <form name="form1"action="show.php" method="get" accept-charset="utf-8">
+           <input type="hidden" name="license" value="">
+           <input type="hidden" name="province" value="">
+         </form>
         <div class="row">
             <div class="col-md-6 col-xs-6">
-                <p>เลขทะเบียน : <?php echo $license; ?></p>
+                <input type = "button" name ="licence1" value="สฬ5420 กรุงเทพมหานคร" style="width:180px;" onclick="javascript:form_value('สฬ5420','กรุงเทพมหานคร');">
             </div>
             <div class="col-md-6 col-xs-6">
-                <p>หมวดจังหวัด :  <?php echo $province; ?> </p>
+                <input type = "button" name ="licence2" value="ณข1549 ลำปาง" style="width:180px;" onclick="javascript:form_value('ณข1549','ลำปาง');">
             </div>
             <div class="col-md-6 col-xs-6">
-                <p>ช่องจอด</p>
+                <input type = "button" name ="licence3" value="ฌส2509 กรุงเทพมหานคร" style="width:180px;" onclick="javascript:form_value('ฌส2509','กรุงเทพมหานคร');">
             </div>
-<div class="col-md-6 col-xs-6">
-                <p> ตัวแปรวันเวลา ที่เข้า</p>
-            </div>
-<div class="col-md-6 col-xs-6">
-                <p>ชั่วโมงที่จอด    ชั่วโมง</p>
-            </div>
-<div class="col-md-6 col-xs-6">
-                <p>ค่าจอด    บาท</p>
-            </div>
- 
-        </div> 
+        </div>
     </div>
     <!-- /.container -->
 
@@ -82,7 +68,13 @@ $province = $_GET["province"];
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
+<script type="text/javascript"> 
+function form_value(datax,province) {
+    form1.license.value =datax;
+    form1.province.value =province;
+    form1.submit();
+};
+</script>
 </body>
 
 </html>
