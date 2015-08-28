@@ -8,6 +8,7 @@ $record1 = array(
     "pay" => "1500",
     "shop" => ""
 );
+
 $record2 = array(
     "id" => "2",
     "license" => "สฬ5420",
@@ -17,6 +18,7 @@ $record2 = array(
     "pay" => "500",
     "shop" => ""
 );
+
 $record3 = array(
     "id" => "3",
     "license" => "ฌส2709",
@@ -26,4 +28,5 @@ $record3 = array(
     "province" => "กรุงเทพมหานคร",
     "shop" => "5000"
 );
+
 $data = array($record1,$record2,$record3);
