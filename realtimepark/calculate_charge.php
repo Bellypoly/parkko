@@ -1,47 +1,58 @@
 <?php
 
-function calculate_charge($total_hours=0, $discount_type=0){
+function calculate_charge(){
 
-	$park_hours = 5;
-	$discount_type = 5000;
-	$free_hour = 3;
-	$fee_per_hour = 10;
-	$free_hour = 1;
+	date_default_timezone_set('Asia/Bangkok');
 
-	$total_hours = 0;
+	$start_time = new DateTime('2015-08-26 19:00:00');
+	$stop_time = new DateTime();
+	$diff = $start_time->diff($stop_time);
+	
+	$park_hours = $diff->h;
+	$park_minutes = $diff->i;
+
+	$park_hours = $diff->h;
+	$park_minutes = $diff->i;
+
 	$total_charge = 0;
 
-	$park_hours - $free_hour = $total_hours;
+	if ($park_minutes > 0){
+		$park_hours = $park_hours + 1;
+	};
 
-	if ($discount_type == 5000){
-		$total_hours = $total_hours - 3;
-	}elseif ($discount_type == 10000){
-		$total_hours = $total_hours - 6;
-	}
+	//------------------------
 
-	if ($total_hours <= 0){
-		$total_charge = 0;
-	} else {
+	// for ($x=1; $x <= $park_hours; $x++){
+
+	// 	if ($x = 1){
+	// 		$current_charge = 0;
+	// 	} else if ($x >= 1 && $x <= 3) {
+	// 		if ($x = 1){
+	// 			$current_charge = 10;
+	// 		}
+	// 	} else {
+
+	// 		$current_charge = 20;
+	// 		// $current_hour = $start_time->format('H');
+	// 		// if ($current_hour >= '2' && $current_hour <= '6'){
+	// 		// 	$current_charge = 250;
+	// 		// } else {
+	// 		// 	$current_charge = 20;
+	// 		// }
+	// 	}
+
+	// 	$total_charge = $total_charge + $current_charge;
+	// 	// $start_time->add(new DateInterval('PT1H'));
+
+	// }
 
 
-		$total_hours = 1;
+	// //-----------------------
+	// echo $total_charge;
 
-		for ($x=1; $x<=$total_hours; $x++) {
-			
-			if ($x <= 3){
-				//10 baht per hour
-				$total_charge = $total_charge + 10;
-			} elseif ($x > 3) {
-				//20 baht per hour
-				$total_charge = $total_charge + 20;
-			}
-
-
-		}
-	}
-
-	echo $total_charge.' Bahts';
+	return '2690';
 
 }
 
-calculate_charge();
+echo calculate_charge();
+
