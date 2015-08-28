@@ -38,12 +38,12 @@ $d[1][2]= $record1;
 $d[2][1]= $record2;
 $d[3][1]= $record3;
 
-//print_r($_POST);
+print_r($_POST);
 
 $key = array_search($_POST['textlicense'], $car);
 $province = $_POST['province'];
 $car_log = $d[$key][$province];
-//print_r($car_log);
+print_r($car_log);
 
 function get_rate($time_in, $time_out){
     $data = round((strtotime($time_out) - strtotime($time_in))/3600, 1);
@@ -97,12 +97,12 @@ $time_out = $car_log['time_out'];
 
 $hour = get_hour($time_in, $time_out);
 
-//echo 'rate :'.get_rate($time_in, $time_out);//(วันเวลาเข้า, ชั่วโมงทั้งหมด)
-//echo '<br/>';
-//print_r(cal(1500, get_rate($time_in, $time_out)));
+echo 'rate :'.get_rate($time_in, $time_out);//(วันเวลาเข้า, ชั่วโมงทั้งหมด)
+echo '<br/>';
+print_r(cal(1500, get_rate($time_in, $time_out)));
 
 $rate = get_rate($time_in, $time_out);//(วันเวลาเข้า, ชั่วโมงทั้งหมด)
-//echo '<br/>';
+echo '<br/>';
 $change = cal(1500, get_rate($time_in, $time_out));
 ?>
 
