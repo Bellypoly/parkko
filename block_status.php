@@ -33,21 +33,52 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript">
+    // function changeColor () {
         $(document).ready(function(){
-            $("[id^='blk_']").click(function(){
-                alert($(this).attr('value'));
-                $.ajax({
-                    url: "block_update.php",
-                    type: "GET",
-                    data: {id: e.target.id}, //this sends the user-id to php as a post variable, in php it can be accessed as $_POST['uid']
-                    success: function(data){
-                        data = JSON.parse(data);
-                        //update some fields with the updated data
-                        //you can access the data like 'data["driver"]'
-                    }
-                });
-            });
+        $("[id^='blk_']").click(function(){
+            alert($(this).css("background-color"));
+            if($(this).css("background-color") == 'rgb(255, 192, 203)'){
+                $(this).css("background-color",'rgb(141, 199, 63)');
+            }
+            else{
+                $(this).css("background-color",'rgb(255, 192, 203)');
+            }
+                
         });
+    });
+    // }
+        // $(document).ready(function(){
+        //     var block_type = '';
+        //     $("[id^='blk_']").click(function(){
+        //         alert($(this).attr('name'));
+        //         if($(this).attr('name')=='1'){
+        //             $(this).attr('name') = '2';
+        //         }
+        //         else{
+        //             $(this).attr('name') = '1';
+        //         }
+        //         //     block_type = 1;
+        //         //     $(this).attr('class') = 'block_lady';
+        //         //     $(this).attr('name') = '2';
+        //         // }
+        //         // else{
+        //         //     block_type = 2;
+        //         //     $(this).attr('class') = 'block1'
+        //         //     $(this).attr('name') = '2';
+        //         // }
+        //         $.ajax({
+        //             type: "GET",
+        //             data: { id:$(this).attr('value'),
+        //                     block_type:block_type},
+        //             url: "block_update.php",
+        //             success: function(data){
+        //                //data will contain the vote count echoed by the controller i.e.  
+        //                  alert(data);
+        //               //then append the result where ever you want like
+        //             }
+        //         });
+        // //     });
+        // // });
     </script>
 </head>
 
@@ -59,12 +90,12 @@
     <div class="container">
         <!-- /.row -->
         <div class="row" >
-              <div id="blk_1" value="1" class="block1 col-xs-12 col-sm-6 col-md-6">1</div>
-              <div id="blk_2" value="2" class="block1 col-xs-6 col-md-6">2</div>
+              <div id="blk_1" value="1" name="1"  class="block1 col-xs-12 col-sm-6 col-md-6">1</div>
+              <div id="blk_2" value="2" name="1"  class="block1 col-xs-6 col-md-6">2</div>
         </div>
         <div class="row" >
-              <div id="blk_3" value="3" class="block1 col-xs-12 col-sm-6 col-md-6">3</div>
-              <div id="blk_4" value="4" class="block1 col-xs-6 col-md-6">4</div>
+              <div id="blk_3" value="3" name="1"  class="block1 col-xs-12 col-sm-6 col-md-6">3</div>
+              <div id="blk_4" value="4" name="1"  class="block1 col-xs-6 col-md-6">4</div>
         </div>
 
         
