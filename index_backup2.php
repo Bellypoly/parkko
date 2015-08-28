@@ -186,7 +186,7 @@ $change = cal(1500, get_rate($time_in, $time_out));
             </div>
         </div>
         <!-- /.row -->
-        <form action="index.php" method="post">
+        <form action="cal.php" method="post">
             <input id ="txtlicense" name="textlicense" type="text" class="form-control" placeholder="เลขทะเบียน"/><br>
             <select name="province" class="form-control" >
                   <option value='0'>เลือกจังหวัด</option>
