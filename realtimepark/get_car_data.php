@@ -20,8 +20,10 @@ function get_data($license = '', $province = '')
     $result['time_in'] = $temp['time_in'];
     $result['time_now'] = date('Y/m/d H:i:s');
     $result['hours'] = countHours($result['time_in'], $result['time_now']);
-    var_dump($result);
+    $result['price'] = 0;
+    return $result;
 }
 
 //example
-get_data('ณข1549', 'ลำปาง');
+$dd = get_data('ณข1549', 'ลำปาง');
+var_dump($dd);
