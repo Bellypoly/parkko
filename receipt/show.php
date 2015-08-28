@@ -1,5 +1,5 @@
 <?php
-    include('../var.php');
+    include('../var1.php');
     
     $id =  '';
     if(isset($_REQUEST['id']) && $_REQUEST['id']){
