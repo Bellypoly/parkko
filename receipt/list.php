@@ -17,5 +17,5 @@ include("../var.php");
 		</a>
 		<div style="height:30px;"></div>
 		<?php }?>
-	</body>
+	</body> 
 </html> 
