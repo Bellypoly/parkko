@@ -1,7 +1,9 @@
 <?php
 // $id = isset($_GET['id']);
-echo $_GET['id'].'<br>';
-echo $_GET['block_type'];
+// echo $_GET['id'].'<br>';
+// echo $_GET['block_type'];
+$block_type = $_GET['block_type'];
+$id = $_GET['id'];
 
 $servername = "128.199.248.168";
 $username = "root";
@@ -14,8 +16,13 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
-$sql = "UPDATE block SET block_type = 2 WHERE id =".$_GET['id'];
+if($block_type == '2'){
+	$sql = "UPDATE block SET block_type = 1 WHERE id =".$_GET['id'];
+}
+if($block_type == '1'){
+	$sql = "UPDATE block SET block_type = 2 WHERE id =".$_GET['id'];
+}
+// echo $sql;
 
 
 if (mysqli_query($conn, $sql)) {
